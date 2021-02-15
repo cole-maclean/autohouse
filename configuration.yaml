@@ -1,0 +1,55 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+
+input_boolean :
+  wakeup_enabled:
+    name: "Wake-up lights"
+    icon: mdi:theme-light-dark
+
+input_datetime:
+  wakeup_time:
+    name: "Start lights at"
+    has_time: true
+    has_date: false
+  bedroom_humid_time1:
+    name: "Humid Time 1"
+    has_time: true
+    has_date: false
+  bedroom_humid_time2:
+    name: "Humid Time 2"
+    has_time: true
+    has_date: false
+  bedroom_air_time1:
+    name: "Air Purify Time 1"
+    has_time: true
+    has_date: false
+  bedroom_air_time2:
+    name: "Air Purify Time 2"
+    has_time: true
+    has_date: false
+
+light:
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - light.bedroom_lamp
+      - light.hue_white_candle_1
+      - light.hue_white_candle_2
+      - light.hue_white_candle_3
+  - platform: group
+    name: Bedroom Fan Lights
+    entities:
+      - light.hue_white_candle_1
+      - light.hue_white_candle_2
+      - light.hue_white_candle_3

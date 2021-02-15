@@ -1,0 +1,13 @@
+- id: '1611888165780'
+  name: Bedtime
+  entities:
+    light.bedroom_lamp:
+      brightness: 99
+      rgb_color:
+      - 165
+      - 76
+      - 255
+      effect: none
+      friendly_name: Bedroom Lamp
+      supported_features: 63
+      state: 'on'
