@@ -3,133 +3,25 @@
     platform: template
     value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
   condition:
-  - condition: state
-    entity_id: input_boolean.wakeup_enabled
-    state: 'on'
-  - condition: or # One of the conditions below must be true
-    conditions:
-      - condition: time # Will be true on weekdays
-        weekday:
-          - mon
-          - tue
-          - wed
-          - thu
-          - fri
+    - condition: state
+      entity_id: input_boolean.wakeup_enabled
+      state: "on"
+    - condition: or # One of the conditions below must be true
+      conditions:
+        - condition: time # Will be true on weekdays
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
   action:
-  - service: light.turn_on
-    entity_id: light.bedroom_lamp # Put the entity of your light or your group here
-    data:
-      transition: 600 # Transition time in seconds
-      brightness: 255
-      rgb_color:
+    - service: light.turn_on
+      entity_id: light.bedroom_lamp # Put the entity of your light or your group here
+      data:
+        transition: 600 # Transition time in seconds
+        brightness: 255
+        rgb_color:
           - 18
           - 167
           - 204
-          
-- alias: "Bedroom Lights On"
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: '322abc4a5cc161373c82247d393efd58'
-  variables:
-      command: '{{ trigger.event.data.command }}'
-      cluster_id: '{{ trigger.event.data.cluster_id }}'
-      endpoint_id: '{{ trigger.event.data.endpoint_id }}'
-      args: '{{ trigger.event.data.args }}'
-  condition:
-    condition: and
-    conditions:
-      - '{{ endpoint_id == 1 }}'
-      - '{{ cluster_id == 6 }}'
-      - '{{ command == ''on'' }}'
-      - condition: state
-        entity_id: "light.bedroom_lights"
-        state: "off"
-  action:
-  - service: light.turn_on
-    entity_id: light.bedroom_lights # Put the entity of your light or your group here
-    data:
-      brightness_pct: 60
-      rgb_color:
-          - 255
-          - 214
-          - 170
-    
-- alias: "Bedroom Lights Off"
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: '322abc4a5cc161373c82247d393efd58'
-  variables:
-      command: '{{ trigger.event.data.command }}'
-      cluster_id: '{{ trigger.event.data.cluster_id }}'
-      endpoint_id: '{{ trigger.event.data.endpoint_id }}'
-      args: '{{ trigger.event.data.args }}'
-  condition:
-    condition: and
-    conditions:
-      - '{{ endpoint_id == 1 }}'
-      - '{{ cluster_id == 6 }}'
-      - '{{ command == ''on'' }}'
-      - condition: state
-        entity_id: "light.bedroom_lights"
-        state: "on"
-  action:
-  - service: light.turn_off
-    entity_id: light.bedroom_lights
-
-- alias: "Bedroom Lamp On"
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: '66cfa9b11ef5d17c79e68456761689b0'
-  variables:
-      command: '{{ trigger.event.data.command }}'
-      cluster_id: '{{ trigger.event.data.cluster_id }}'
-      endpoint_id: '{{ trigger.event.data.endpoint_id }}'
-      args: '{{ trigger.event.data.args }}'
-  condition:
-    condition: and
-    conditions:
-      - '{{ endpoint_id == 1 }}'
-      - '{{ cluster_id == 6 }}'
-      - '{{ command == ''on'' }}'
-      - condition: state
-        entity_id: "light.bedroom_lamp"
-        state: "off"
-  action:
-  - service: light.turn_on
-    entity_id: light.bedroom_lamp # Put the entity of your light or your group here
-    data:
-      brightness_pct: 60
-      rgb_color:
-          - 255
-          - 214
-          - 170
-    
-- alias: "Bedroom Lamp Off"
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: '66cfa9b11ef5d17c79e68456761689b0'
-  variables:
-      command: '{{ trigger.event.data.command }}'
-      cluster_id: '{{ trigger.event.data.cluster_id }}'
-      endpoint_id: '{{ trigger.event.data.endpoint_id }}'
-      args: '{{ trigger.event.data.args }}'
-  condition:
-    condition: and
-    conditions:
-      - '{{ endpoint_id == 1 }}'
-      - '{{ cluster_id == 6 }}'
-      - '{{ command == ''on'' }}'
-      - condition: state
-        entity_id: "light.bedroom_lamp"
-        state: "on"
-  action:
-  - service: light.turn_off
-    entity_id: light.bedroom_lamp

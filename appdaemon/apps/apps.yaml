@@ -1,4 +1,20 @@
 ---
-hello_world:
-  module: hello
-  class: HelloWorld
+bedroom_entry_shortcut_button:
+  module: buttons
+  class: TradfriShortcutButton
+  button_id: 322abc4a5cc161373c82247d393efd58
+  click_scenes:
+    - scene.bedroom_lights_on
+    - scene.bedroom_lights_off
+  hold_scene: scene.bedroom_lights_off
+  double_scene: scene.bedroom_lights_off
+
+bedroom_lamp_shortcut_button:
+  module: buttons
+  class: TradfriShortcutButton
+  button_id: 66cfa9b11ef5d17c79e68456761689b0
+  click_scenes:
+    - scene.bedroom_lights_on
+    - scene.bedroom_lights_off
+  hold_scene: scene.bedroom_lights_off
+  double_scene: scene.bedroom_lights_off
