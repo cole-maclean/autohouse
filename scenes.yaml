@@ -1,22 +1,33 @@
-- id: "1611888165780"
+- id: "bedtime"
   name: Bedtime
   entities:
     light.bedroom_lamp:
-      brightness: 99
+      brightness_pct: 40
       rgb_color:
-        - 165
-        - 76
+        - 112
+        - 113
         - 255
-      effect: none
-      friendly_name: Bedroom Lamp
-      supported_features: 63
       state: "on"
+
+- id: "bedroom_fan_lights_on"
+  name: Bedroom Fan Lights On
+  entities:
+    light.bedroom_fan_lights:
+      brightness_pct: 60
+      state: "on"
+      color_name: lightgoldenrodyellow
+
+- id: "bedroom_fan_lights_off"
+  name: Bedroom Fan Lights Off
+  entities:
+    light.bedroom_fan_lights:
+      state: "off"
 
 - id: "bedroom_lights_on"
   name: Bedroom Lights On
   entities:
     light.bedroom_lights:
-      brightness_pct: 80
+      brightness_pct: 60
       state: "on"
       color_name: lightgoldenrodyellow
 
@@ -24,4 +35,14 @@
   name: Bedroom Lights Off
   entities:
     light.bedroom_lights:
+      state: "off"
+
+- id: "bedroom_lamp_on"
+  name: Bedroom Lamp On
+  entities:
+    light.bedroom_lamp:
+      brightness_pct: 80
+      state: "on"
+      color_name: lightgoldenrodyellow
+    light.bedroom_fan_lights:
       state: "off"

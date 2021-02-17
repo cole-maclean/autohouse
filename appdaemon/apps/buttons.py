@@ -4,30 +4,39 @@ from datetime import datetime
 class TradfriShortcutButton(hass.Hass):
 
     def initialize(self):
-        self.log(f'Tradfri Button listening to events from id {self.args["button_id"]}')
-        self.button_id = self.args["button_id"]
-        self.last_scene = -1
-        self.click_scenes = self.args['click_scenes']
+        self.button_data = self.args['button_data']
+        self._build_scene_list()
+        self.current_scene_index = -1
         self.hold_scene = self.args["hold_scene"]
-        self.double_scene = self.args["double_scene"]
-        self.listen_event(self.on_button_event, "zha_event")
         self.last_triggered = datetime.now()
-
+        self.listen_event(self.on_button_event, "zha_event")
+        
     def on_button_event(self, event_name, data, kwargs):
         if (datetime.now() - self.last_triggered).total_seconds() > 0.5:
-            self.log(f"event triggered {event_name} with data {data}")
-            if data['device_id'] == self.button_id:
+            if data['device_id'] in self.button_data:
                 if data['cluster_id'] == 6:
-                    new_scene = self.get_scene_cycle()
-                    self.turn_on(self.click_scenes[new_scene])
-                    self.last_scene = new_scene
+                    new_scene_index = self._get_next_scene_index(self.current_scene_index, data['device_id'])
+                    self.turn_on(self.scenes[new_scene_index])
+                    self.current_scene_index = new_scene_index
                 elif data['cluster_id'] == 8:
                     self.turn_on(self.hold_scene)
+                    self.current_scene_index = self.scenes.index(self.hold_scene)
         self.last_triggered = datetime.now()
-
     
-    def get_scene_cycle(self):
-        if (self.last_scene + 1) == len(self.click_scenes):
-            return 0
+    def _build_scene_list(self):
+        all_scenes = []
+        for button_id, scenes in self.button_data.items():
+            for s in scenes:
+                all_scenes.append(s)
+        self.scenes = list(set(all_scenes))
+
+    def _get_next_scene_index(self, current_index, button_id):
+        if (current_index + 1) == len(self.scenes):
+            next_scene_index = 0
         else:
-            return self.last_scene + 1
+            next_scene_index = current_index + 1
+
+        if self.scenes[next_scene_index] in self.button_data[button_id]:
+            return next_scene_index
+        else:
+            return self._get_next_scene_index(next_scene_index, button_id)

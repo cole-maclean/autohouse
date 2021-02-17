@@ -1,20 +1,19 @@
 ---
-bedroom_entry_shortcut_button:
+bedroom_lights_shortcut_buttons:
   module: buttons
   class: TradfriShortcutButton
-  button_id: 322abc4a5cc161373c82247d393efd58
-  click_scenes:
-    - scene.bedroom_lights_on
-    - scene.bedroom_lights_off
+  button_data:
+    66cfa9b11ef5d17c79e68456761689b0:
+      - scene.bedroom_lights_on
+      - scene.bedroom_lamp_on
+      - scene.bedtime
+      - scene.bedroom_lights_off
+    6fa1fb6948e6fc5b1b981c6db4c5d000:
+      - scene.bedroom_lights_on
+      - scene.bedroom_lamp_on
+      - scene.bedtime
+      - scene.bedroom_lights_off
+    322abc4a5cc161373c82247d393efd58:
+      - scene.bedroom_fan_lights_on
+      - scene.bedroom_lights_off
   hold_scene: scene.bedroom_lights_off
-  double_scene: scene.bedroom_lights_off
-
-bedroom_lamp_shortcut_button:
-  module: buttons
-  class: TradfriShortcutButton
-  button_id: 66cfa9b11ef5d17c79e68456761689b0
-  click_scenes:
-    - scene.bedroom_lights_on
-    - scene.bedroom_lights_off
-  hold_scene: scene.bedroom_lights_off
-  double_scene: scene.bedroom_lights_off
