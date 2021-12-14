@@ -1,0 +1,32 @@
+# Wiz lights
+- platform: wiz_light
+  name: bedroom_light_1
+  host: 192.168.2.221
+- platform: wiz_light
+  name: bedroom_light_2
+  host: 192.168.2.179
+- platform: wiz_light
+  name: bedroom_light_3
+  host: 192.168.2.220
+- platform: wiz_light
+  name: bedroom_light_4
+  host: 192.168.2.206
+
+# Light Groups
+- platform: group
+  name: Bedroom Lights
+  entities:
+    - light.bedroom_light_1
+    - light.bedroom_light_2
+    - light.bedroom_light_3
+    - light.bedroom_light_4
+- platform: group
+  name: Bedroom Lights Back
+  entities:
+    - light.bedroom_light_1
+    - light.bedroom_light_2
+- platform: group
+  name: Bedroom Lights Front
+  entities:
+    - light.bedroom_light_3
+    - light.bedroom_light_4

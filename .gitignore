@@ -1,5 +1,8 @@
 secrets.yaml
 
 *.log
-*.db
+*.db*
+*.log*
 .storage/*
+tts/*
+*.pyc

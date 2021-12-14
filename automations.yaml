@@ -1,27 +1,23 @@
-- alias: "Wake-me up using bedroom lights"
+- id: "1638934686700"
+  alias: Christmas On
+  description: Turn christmas scene on with sunset
   trigger:
-    platform: template
-    value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
-  condition:
-    - condition: state
-      entity_id: input_boolean.wakeup_enabled
-      state: "on"
-    - condition: or # One of the conditions below must be true
-      conditions:
-        - condition: time # Will be true on weekdays
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
+    - platform: sun
+      event: sunset
+      offset: "30"
+      id: sun_down_plus_30
+  condition: []
   action:
-    - service: light.turn_on
-      entity_id: light.bedroom_lamp # Put the entity of your light or your group here
-      data:
-        transition: 600 # Transition time in seconds
-        brightness: 255
-        rgb_color:
-          - 18
-          - 167
-          - 204
+    - scene: scene.christmas_on
+  mode: single
+- id: "1638935651028"
+  alias: Christmas Off
+  description: Turn christmas off at configured time
+  trigger:
+    - platform: time
+      at: 00:00:00
+      id: midnight
+  condition: []
+  action:
+    - scene: scene.christmas_off
+  mode: single

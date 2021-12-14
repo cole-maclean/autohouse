@@ -3,17 +3,17 @@ bedroom_lights_shortcut_buttons:
   module: buttons
   class: TradfriShortcutButton
   button_data:
-    66cfa9b11ef5d17c79e68456761689b0:
-      - scene.bedroom_lights_on
-      - scene.bedroom_lamp_on
-      - scene.bedtime
-      - scene.bedroom_lights_off
     6fa1fb6948e6fc5b1b981c6db4c5d000:
       - scene.bedroom_lights_on
-      - scene.bedroom_lamp_on
+      - scene.bedroom_prebedtime
       - scene.bedtime
       - scene.bedroom_lights_off
-    322abc4a5cc161373c82247d393efd58:
-      - scene.bedroom_fan_lights_on
+    66cfa9b11ef5d17c79e68456761689b0:
+      - scene.bedroom_lights_on
+      - scene.bedroom_prebedtime
+      - scene.bedtime
+      - scene.bedroom_lights_off
+    df4f23d01f59214a423d49b95c7f4a72:
+      - scene.bedroom_lights_on
       - scene.bedroom_lights_off
   hold_scene: scene.bedroom_lights_off

@@ -24,11 +24,11 @@ class TradfriShortcutButton(hass.Hass):
         self.last_triggered = datetime.now()
     
     def _build_scene_list(self):
-        all_scenes = []
+        self.scenes = []
         for button_id, scenes in self.button_data.items():
             for s in scenes:
-                all_scenes.append(s)
-        self.scenes = list(set(all_scenes))
+                if s not in self.scenes:
+                    self.scenes.append(s)
 
     def _get_next_scene_index(self, current_index, button_id):
         if (current_index + 1) == len(self.scenes):
