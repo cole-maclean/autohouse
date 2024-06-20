@@ -1,0 +1,7 @@
+fan:
+  - platform: virtual
+    name: Test Fan
+    speed_count: 10
+    direction: False
+    oscillate: False
+    initial_availability: True

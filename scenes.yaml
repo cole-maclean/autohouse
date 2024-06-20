@@ -1,110 +1,43 @@
-- id: bedtime
-  name: Bedtime
+- id: main_floor_blinds_open
+  name: Main Floor Blinds Open
   entities:
-    light.bedroom_lights:
-      rgb_color:
-      - 255
-      - 0
-      - 254
-      friendly_name: Bedroom Lights Back
-      icon: mdi:lightbulb-group
-      state: 'on'
-      brightness_pct: 20
-  icon: mdi:sleep
-- id: bedroom_lights_on
-  name: Bedroom Lights On
+    cover.living_room_blind_e:
+      state: open
+    cover.office_blind_sw:
+      state: open
+    cover.office_blind_w:
+      state: open
+    cover.kitchen_blind_e:
+      state: open
+  icon: mdi:blinds-horizontal-closed
+
+- id: main_floor_blinds_closed
+  name: Main Floor Blinds Closed
   entities:
-    light.bedroom_lights:
-      brightness_pct: 80
-      state: 'on'
-      color_name: lightgoldenrodyellow
-- id: bedroom_lights_off
-  name: Bedroom Lights Off
+    cover.living_room_blind_e:
+      state: closed
+    cover.office_blind_sw:
+      state: closed
+    cover.office_blind_w:
+      state: closed
+    cover.kitchen_blind_e:
+      state: closed
+  icon: mdi:blinds-horizontal-closed
+
+- id: main_floor_blinds_e_open
+  name: Main Floor Blinds E Open
   entities:
-    light.bedroom_lights:
-      state: 'off'
-- id: christmas_on
-  name: Christmas On
+    cover.living_room_blind_e:
+      state: open
+    cover.kitchen_blind_e:
+      state: open
+  icon: mdi:blinds-horizontal-closed
+
+- id: main_floor_blinds_e_closed
+  name: Main Floor Blinds E Closed
   entities:
-    switch.indoor_christmas_lights1:
-      friendly_name: Indoor Christmas Lights
-      state: 'on'
-    switch.christmas_tree:
-      friendly_name: Christmas Tree
-      state: 'on'
-  icon: mdi:string-lights
-- id: christmas_off
-  name: Christmas Off
-  entities:
-    switch.indoor_christmas_lights1:
-      friendly_name: Indoor Christmas Lights
-      state: 'off'
-    switch.christmas_tree:
-      friendly_name: Christmas Tree
-      state: 'off'
-  icon: mdi:string-lights
-- id: prebedtime
-  name: Bedroom Prebedtime
-  entities:
-    light.bedroom_lights:
-      min_mireds: 200
-      max_mireds: 370
-      effect_list:
-      - Bedtime
-      - Candlelight
-      - Christmas
-      - Club
-      - Cool white
-      - Cozy
-      - Daylight
-      - Deepdive
-      - Fall
-      - Fireplace
-      - Focus
-      - Forest
-      - Golden white
-      - Halloween
-      - Jungle
-      - Mojito
-      - Night light
-      - Ocean
-      - Party
-      - Pastel Colors
-      - Plantgrowth
-      - Pulse
-      - Relax
-      - Rhythm
-      - Romance
-      - Spring
-      - Steampunk
-      - Summer
-      - Sunset
-      - TV time
-      - True colors
-      - Wake up
-      - Warm White
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: hs
-      brightness: 87
-      hs_color:
-      - 0
-      - 85.938
-      rgb_color:
-      - 255
-      - 35
-      - 35
-      xy_color:
-      - 0.681
-      - 0.301
-      entity_id:
-      - light.bedroom_light_1
-      - light.bedroom_light_2
-      - light.bedroom_light_3
-      - light.bedroom_light_4
-      friendly_name: Bedroom Lights
-      icon: mdi:lightbulb-group
-      supported_features: 4
-      state: 'on'
-  icon: mdi:bed-double
+    cover.living_room_blind_e:
+      state: closed
+    cover.kitchen_blind_e:
+      state: closed
+  icon: mdi:blinds-horizontal-closed

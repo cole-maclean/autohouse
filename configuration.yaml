@@ -1,6 +1,6 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
+pid_controller:
 # Text to speech
 tts:
   - platform: google_translate
@@ -11,3 +11,8 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 sensor: !include sensors.yaml
+virtual: !include virtual.yaml
+
+recorder:
+  purge_keep_days: 732
+  commit_interval: 5
