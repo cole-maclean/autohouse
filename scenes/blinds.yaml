@@ -1,0 +1,56 @@
+- id: main_floor_blinds_open
+  name: Main Floor Blinds Open
+  entities:
+    cover.living_room_blind_e:
+      state: open
+    cover.office_blind_sw:
+      state: open
+    cover.office_blind_w:
+      state: open
+    cover.kitchen_blind_e:
+      state: open
+  icon: mdi:blinds-horizontal-closed
+- id: main_floor_blinds_closed
+  name: Main Floor Blinds Closed
+  entities:
+    cover.living_room_blind_e:
+      state: closed
+    cover.office_blind_sw:
+      state: closed
+    cover.office_blind_w:
+      state: closed
+    cover.kitchen_blind_e:
+      state: closed
+  icon: mdi:blinds-horizontal-closed
+- id: living_room_blinds_open
+  name: Living Room Blinds Open
+  entities:
+    cover.living_room_blind_e:
+      state: open
+    cover.kitchen_blind_e:
+      state: open
+  icon: mdi:blinds-horizontal-closed
+- id: living_room_blinds_closed
+  name: Living Room Blinds Closed
+  entities:
+    cover.living_room_blind_e:
+      state: closed
+    cover.kitchen_blind_e:
+      state: closed
+  icon: mdi:blinds-horizontal-closed
+- id: office_blinds_open
+  name: Office Blinds Open
+  entities:
+    cover.office_blind_sw:
+      state: open
+    cover.office_blind_w:
+      state: open
+  icon: mdi:blinds-horizontal-closed
+- id: office_blinds_closed
+  name: Office Blinds Closed
+  entities:
+    cover.office_blind_sw:
+      state: closed
+    cover.office_blind_w:
+      state: closed
+  icon: mdi:blinds-horizontal-closed

@@ -1,0 +1,13 @@
+- id: hvac_fan_on
+  name: HVAC Fan On
+  entities:
+    climate.main_floor:
+      state: heat
+      fan_mode: "on"
+
+- id: hvac_fan_auto
+  name: HVAC Fan Auto
+  entities:
+    climate.main_floor:
+      state: heat
+      fan_mode: "auto"
