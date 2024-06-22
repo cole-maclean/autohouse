@@ -1,0 +1,4 @@
+---
+air_quality_control:
+  module: hvac
+  class: AirQualityControl
