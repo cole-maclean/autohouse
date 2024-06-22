@@ -1,0 +1,9 @@
+---
+air_quality_control:
+  module: hvac
+  class: AirQualityControl
+  air_quality_control_sensor: sensor.office_air_e_co2
+  air_quality_threshold: 550
+  activate_scene: scene.hvac_fan_on
+  deactivate_scene: scene.hvac_fan_auto
+  runtime_seconds: 1800
