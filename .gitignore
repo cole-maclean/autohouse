@@ -6,3 +6,4 @@ secrets.yaml
 .storage/*
 tts/*
 *.pyc
+.cloud/*
