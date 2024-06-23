@@ -11,3 +11,29 @@
     climate.main_floor:
       state: heat
       fan_mode: "auto"
+
+- id: bedroom_purifier_idle
+  name: Bedroom Air Purifier Idle
+  entities:
+    fan.bedroom_purifier_fan:
+      state: "on"
+      percentage: 30
+
+- id: bedroom_purifier_cleaning
+  name: Bedroom Air Purifier Cleaning
+  entities:
+    fan.bedroom_purifier_fan:
+      state: "on"
+      percentage: 100
+
+- id: bedroom_fan_on
+  name: Bedroom Fan On
+  entities:
+    number.new_device_port_8_on_power:
+      state: "4"
+
+- id: bedroom_fan_off
+  name: Bedroom Fan Off
+  entities:
+    number.new_device_port_8_on_power:
+      state: "0"

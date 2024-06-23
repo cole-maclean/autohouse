@@ -10,3 +10,8 @@
       friendly_name: "AutoHouse Outdoor Humidity"
       unit_of_measurement: "%"
       value_template: "{{ state_attr('weather.autohouse', 'humidity') }}"
+
+    hvac_fan_mode:
+      friendly_name: "Hvac Fan Mode"
+      value_template: "{{ state_attr('climate.main_floor', 'fan_mode') }}"
+      icon_template: mdi:fan

@@ -1,9 +1,36 @@
 ---
-air_quality_control:
+office_co2_air_quality_control:
   module: hvac
   class: AirQualityControl
   air_quality_control_sensor: sensor.office_air_e_co2
-  air_quality_threshold: 550
+  air_quality_threshold: 600
   activate_scene: scene.hvac_fan_on
   deactivate_scene: scene.hvac_fan_auto
   runtime_seconds: 1800
+
+office_particulate_air_quality_control:
+  module: hvac
+  class: AirQualityControl
+  air_quality_control_sensor: sensor.office_air_e_pm_25m_weight_concentration
+  air_quality_threshold: 5
+  activate_scene: scene.hvac_fan_on
+  deactivate_scene: scene.hvac_fan_auto
+  runtime_seconds: 1800
+
+office_voc_air_quality_control:
+  module: hvac
+  class: AirQualityControl
+  air_quality_control_sensor: sensor.office_air_e_sen55_voc
+  air_quality_threshold: 100
+  activate_scene: scene.hvac_fan_on
+  deactivate_scene: scene.hvac_fan_auto
+  runtime_seconds: 1800
+
+bedroom_particulate_air_quality_control:
+  module: hvac
+  class: AirQualityControl
+  air_quality_control_sensor: sensor.bedroom_purifier_pm25
+  air_quality_threshold: 5
+  activate_scene: scene.bedroom_purifier_cleaning
+  deactivate_scene: scene.bedroom_purifier_idle
+  runtime_seconds: 600
